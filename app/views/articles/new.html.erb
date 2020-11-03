@@ -1,0 +1,28 @@
+<h1>Articles</h1>
+
+<%= form_for :article, url: articles_path do |f| %>
+  
+  <% if @article and @article.errors.any? %>
+    <p>
+      <ul>
+        <%= @article.errors.full_messages.each do |msg|%>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </p>
+  <% end %>
+  <p>
+    <%= f.label :email %> <br>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :message %> <br>
+    <%= f.text_area :message %>
+  </p>
+
+  <p>
+    <%= f.submit 'Send Message'%>
+  </p>
+
+<% end %>
