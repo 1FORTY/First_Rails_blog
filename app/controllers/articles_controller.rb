@@ -1,11 +1,10 @@
 class ArticlesController < ApplicationController
 
   def new
-
   end
 
   def create
-    @article = Contact.new(article_params)
+    @article = Article.new(article_params)
     
     if @article.valid?
       @article.save
@@ -13,12 +12,11 @@ class ArticlesController < ApplicationController
       render action: 'new'
     end
 
-    render plain: params[:article].inspect
   end
 
-    private
-    def contact_params
-      params.require(:article).permit(:email, :message)
-    end
+  private
+  def article_params
+    params.require(:article).permit(:title, :text)
+  end
 
 end
